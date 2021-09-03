@@ -1,3 +1,4 @@
+#pragma once
 
 #include"G4VUserDetectorConstruction.hh"
 #include "G4Box.hh"// incluindo uma caixa

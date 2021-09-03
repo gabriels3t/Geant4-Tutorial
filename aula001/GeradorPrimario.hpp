@@ -1,4 +1,5 @@
-#include "G4VUserActionInitialization.hh" // inicializador das ações
+#pragma once
+
 #include "G4VUserPrimaryGeneratorAction.hh" // gerador primario (fonte)
 #include "G4ParticleGun.hh" // produtor de particulas 
 #include "G4Electron.hh" // produzindo eletrons

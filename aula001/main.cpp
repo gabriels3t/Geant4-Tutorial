@@ -1,29 +1,11 @@
 #include <iostream>
 #include "G4RunManager.hh"// "inicializador"
 #include "MeuDetector.hpp" // Incluindo Detector
-#include "GeradorPrimario.hpp"
+#include "GeradorPrimario.hpp"// Incluindo Gerador Primario
+#include "FonteDeParticulas.hpp" // Incluindo Fonte de particulas
 #include "G4VUserPhysicsList.hh"// incluindo a lista de fisica
 #include "G4PhysListFactory.hh"// incluindo para poder usar lista de fisicas ja existentes no site do cern
 
-// ------------------------------ incluindo a fonte de particulas --------------------------------
-// ------------------------------ Classe Gerador Primario ----------------------------------------
-
-// ------------------------------ Fim Classe Gerador Primario ------------------------------------
-// ------------------------------ Classe Fonte De Particulas -------------------------------------
-// ------------------------------ Fim Classe Fonte De Particulas ---------------------------------
-class FonteDeParticulas: public G4VUserActionInitialization
-{
-public:
-    virtual void Build() const override;
-};
-
-void FonteDeParticulas::Build() const{
-    SetUserAction(new GeradorPrimario());
-}
-
-// ------------------------------ Fim Classe Fonte De Particulas ---------------------------------
-
-// ------------------------------ Fim da fonte de particulas -------------------------------------
 
 int main(){
     //G4RunManager *manager = new G4RunManager();
