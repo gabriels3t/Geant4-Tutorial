@@ -54,6 +54,11 @@ public:
 void GeradorPrimario::GeneratePrimaries(G4Event* anEvent) {
     auto *particleGun = new G4ParticleGun(G4Electron::Definition()); // Criando o produtor de particulas para jogar eletrons
     particleGun->GeneratePrimaryVertex(anEvent);
+    std::cout << "Run Id             : " << anEvent->GetEventID()<< std::endl;
+    std::cout << "Particula primaria : " << particleGun->GetParticleDefinition()->GetParticleName()<< std::endl;
+    std::cout << "Energia (Mev)      : " << particleGun->GetParticleEnergy()<< std::endl;
+
+
 }
 // ------------------------------ Fim Classe Gerador Primario ------------------------------------
 // ------------------------------ Classe Fonte De Particulas -------------------------------------
@@ -84,7 +89,7 @@ int main(){
     manager->SetUserInitialization(new FonteDeParticulas());// inicializador a fonte de particulas
     manager->Initialize();// Inicializando a simulação
     
-    manager->BeamOn(1); // ligando o feixe de particulas (quantas particulas eu quero)
+    manager->BeamOn(200); // ligando o feixe de particulas (quantas particulas eu quero)
     delete manager;
     delete factory;
 
