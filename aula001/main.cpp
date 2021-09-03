@@ -39,23 +39,36 @@ G4VPhysicalVolume* MeuDetector::Construct(){
 
 // ------------------------------ Fim da lista de Fisica -----------------------------------------
 // ------------------------------ incluindo a fonte de particulas --------------------------------
+// ------------------------------ Classe Gerador Primario ----------------------------------------
 
 #include "G4VUserActionInitialization.hh" // inicializador das ações
 #include "G4VUserPrimaryGeneratorAction.hh" // gerador primario (fonte)
 #include "G4ParticleGun.hh" // produtor de particulas 
 #include "G4Electron.hh" // produzindo eletrons
 
+class GeradorPrimario:public G4VUserPrimaryGeneratorAction
+{
+public:
+  virtual void GeneratePrimaries(G4Event* anEvent) override;
+};
+void GeradorPrimario::GeneratePrimaries(G4Event* anEvent) {
+    auto *particleGun = new G4ParticleGun(G4Electron::Definition()); // Criando o produtor de particulas para jogar eletrons
+    particleGun->GeneratePrimaryVertex(anEvent);
+}
+// ------------------------------ Fim Classe Gerador Primario ------------------------------------
+// ------------------------------ Classe Fonte De Particulas -------------------------------------
+// ------------------------------ Fim Classe Fonte De Particulas ---------------------------------
 class FonteDeParticulas: public G4VUserActionInitialization
 {
 public:
     virtual void Build() const override;
 };
-/*
-void FonteDeParticulas::Build() const{
-    SetUserAction(new GeradorPrimario);
-}
-*/
 
+void FonteDeParticulas::Build() const{
+    SetUserAction(new GeradorPrimario());
+}
+
+// ------------------------------ Fim Classe Fonte De Particulas ---------------------------------
 
 // ------------------------------ Fim da fonte de particulas -------------------------------------
 
@@ -68,7 +81,12 @@ int main(){
 
     manager->SetUserInitialization(new MeuDetector()); // inicializador o detector 
     manager->SetUserInitialization(listadefisica);  // inicializador a lista de fisica
-    
+    manager->SetUserInitialization(new FonteDeParticulas());// inicializador a fonte de particulas
     manager->Initialize();// Inicializando a simulação
     
+    manager->BeamOn(1); // ligando o feixe de particulas (quantas particulas eu quero)
+    delete manager;
+    delete factory;
+
+
 }
