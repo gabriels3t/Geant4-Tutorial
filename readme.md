@@ -7,7 +7,8 @@ Geant4 é uma plataforma para "a simulação da passagem de partículas pela mat
 ## Descição de cada aula 
  ### 001 A menor simulação
  Entendo o principios do Geant4, não haverá nenhuma simulação mas sim entendendo como tudo funciona 
-
+ ### 002 Interface com o Usuário
+ Incluindo uma interface de usuários,sendo assim com linhas de comando e/ou arquivos de macros.
  
 
  
