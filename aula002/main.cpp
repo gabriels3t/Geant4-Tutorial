@@ -19,16 +19,20 @@ int main(int argc,char** argv){
     runManager->SetUserInitialization(listadefisica);  // inicializador a lista de fisica
     runManager->SetUserInitialization(new FonteDeParticulas());// inicializador a fonte de particulas
     runManager->Initialize();// Inicializando a simulação
-    
-    //auto *executarUI= new G4UIExecutive(argc,argv);
-    //executarUI->SessionStart();
-   
-    auto *uiManager = G4UImanager::GetUIpointer();
+
+    if(argc == 1) {
+        auto *executarUI= new G4UIExecutive(argc,argv);
+        executarUI->SessionStart();
+        delete executarUI;
+    }else{
+        auto *uiManager = G4UImanager::GetUIpointer();
+        uiManager->ApplyCommand("/control/execute "+ G4String(argv[1])); // passando para ler um arquivo macro
+    }  
     //uiManager->ApplyCommand("/run/beamOn 10"); // Passando o comando 
-    uiManager->ApplyCommand("/control/execute "+ G4String(argv[1])); // passando para ler um arquivo macro
+    
     delete runManager;
     delete factory;
-    //delete executarUI;
+    
 
 
 }
