@@ -5,9 +5,11 @@
 #include "FonteDeParticulas.hpp" // Incluindo Fonte de particulas
 #include "G4VUserPhysicsList.hh"// incluindo a lista de fisica
 #include "G4PhysListFactory.hh"// incluindo para poder usar lista de fisicas ja existentes no site do cern
+#include "G4UIExecutive.hh" // incluindo a interface de usuario
 
 
-int main(){
+
+int main(int argc,char** argv){
     //G4RunManager *manager = new G4RunManager();
     auto *manager = new G4RunManager(); // auto faz com que o c++ entenda autimaticamente qual é o obj do ponteiro
     auto *factory = new G4PhysListFactory(); // a fabrica da lista
@@ -19,9 +21,12 @@ int main(){
     manager->SetUserInitialization(new FonteDeParticulas());// inicializador a fonte de particulas
     manager->Initialize();// Inicializando a simulação
     
-    manager->BeamOn(2); // ligando o feixe de particulas (quantas particulas eu quero)
+    auto *executarUI= new G4UIExecutive(argc,argv);
+    executarUI->SessionStart();
+   // manager->BeamOn(2); // ligando o feixe de particulas (quantas particulas eu quero)
     delete manager;
     delete factory;
+    delete executarUI;
 
 
 }
