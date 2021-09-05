@@ -28,17 +28,19 @@ int main(int argc,char** argv){
 
     auto *visManager = new G4VisExecutive(); // Como G4VisManager é puramente virtual, a classe G4VisExecutive ja vem com as flags 
     visManager->Initialize();
+
+    auto *executarUI= new G4UIExecutive(argc,argv,"Qt"); // csh = por terminal, Qt = UI
+    
     if(argc == 1) {
-        auto *executarUI= new G4UIExecutive(argc,argv,"csh"); // csh = por terminal, Qt = UI
-        executarUI->SessionStart();
-        delete executarUI;
+        executarUI->SessionStart();    
     }else{
         auto *uiManager = G4UImanager::GetUIpointer();
         uiManager->ApplyCommand("/control/execute "+ G4String(argv[1])); // passando para ler um arquivo macro
+        executarUI->SessionStart();
     }      
     delete runManager;
     delete factory;
     delete visManager;
-
+    delete executarUI;
 
 }
