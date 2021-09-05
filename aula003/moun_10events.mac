@@ -1,5 +1,5 @@
 #ativando a visualização
-/vis/open OGLIX
+/vis/open OGL
 
 #desenhar a geometria
 /vis/drawVolume

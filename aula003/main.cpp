@@ -11,6 +11,7 @@
 
 
 #define G4VIS_USE_OPENGLX // Ativando o openGL no programa
+#define G4VIS_USE_OPENGLQT // Ativando o QT no programa
 #include"G4VisExecutive.hh" // incluindo motores de visualização
 #include"G4VisManager.hh" // incluindo motores de visualização
 
