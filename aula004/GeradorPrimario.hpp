@@ -2,7 +2,6 @@
 
 #include "G4VUserPrimaryGeneratorAction.hh" // gerador primario (fonte)
 #include "G4ParticleGun.hh" // produtor de particulas 
-#include "G4Geantino.hh" // produzindo uma particula ficticia nula do geant
 
 class GeradorPrimario:public G4VUserPrimaryGeneratorAction
 {
