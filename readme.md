@@ -13,6 +13,8 @@ Geant4 é uma plataforma para "a simulação da passagem de partículas pela mat
  Incluindo interface grafica ,e um vizualizador para a simulação , utilizando o motor OpenGL
  ### 004 Organização do Projeto
  Organizando o projeto 
+ ### 005 Geometria do Detector 
+ Projetando o detector, acrecentando paredes, e volume do liquido.
  
 
  
