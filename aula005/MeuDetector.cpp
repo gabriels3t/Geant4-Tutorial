@@ -19,7 +19,7 @@ G4VPhysicalVolume* MeuDetector::Construct(){
     // Mundo do detector
     auto worldBox = new G4Box("mundo",0.5*CLHEP::m,0.5*CLHEP::m,0.5*CLHEP::m); // O Geant duplica o espaço entao no final sera 1 metro
     auto logicalWord = new G4LogicalVolume(worldBox,ar,"Mundo-Logico");// unindo no mundo logico
-    auto mundoFisico = new G4PVPlacement(0,{0,0,0},logicalWord,"Mundo-Fisico",0,false,0);// volume fisico
+    auto mundoFisico = new G4PVPlacement(0,{0,0,0},logicalWord,"Mundo",0,false,0);// volume fisico
 
     // Detector 
     
@@ -38,6 +38,10 @@ G4VPhysicalVolume* MeuDetector::Construct(){
 
     auto detectorFisico = new G4PVPlacement(0,{0,0,0},detectorLogicoDaParede,"detector-Fisico",logicalWord,false,0); // logicalWord pq esta o detector esta dentro dele 
     
+    // Criando um volume interno para colocar o argonio 
+    auto detectorVolumeLogico = new G4LogicalVolume(detectorInterior,lAr,"Volume-Logico-Detector");
+    auto detectorFisicoDoVoulme = new G4PVPlacement(0,{0,0,0},detectorVolumeLogico,"detector-Fisico-do-volume",logicalWord,false,0); 
+
     return mundoFisico;
     
 }
