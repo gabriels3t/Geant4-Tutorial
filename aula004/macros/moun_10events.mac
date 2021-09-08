@@ -34,4 +34,4 @@
 /gun/particle mu+
 /gun/energy 10 MeV
 /gun/position -10 0 0 m
-/run/beamOn 3
+/run/beamOn 1
