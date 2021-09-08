@@ -1,0 +1,37 @@
+#ativando a visualização
+/vis/open OGL
+
+#desenhar a geometria
+/vis/drawVolume
+
+# visualizando um angulo especifico (em ordenadas polares)
+/vis/viewer/set/viewpointThetaPhi 45. 45.
+
+# zoom especifico
+/vis/viewer/zoom 1.0
+
+
+#Desenhando a trajetoria ate o fim do evento, mostrando os pontos da trajetoria
+# com 2 pixels de tamanho
+/vis/scene/add/trajectories smooth #smooth = suave
+/vis/modeling/trajectories/create/drawByCharge #drawByCharge = desenho para cada trajetoria de cargas das particulas
+/vis/modeling/trajectories/drawByCharge-0/default/setDrawStepPts true  
+/vis/modeling/trajectories/drawByCharge-0/default/setStepPtsSize 2
+
+#A superposição de todo o evento quando rodado
+#/vis/scene/endOfEventAction accumulate
+
+#Restabesendo a atualização automática e os verbosity
+/vis/viewer/set/autoRefresh true
+
+
+
+/run/verbose 1
+/event/verbose 1
+/tracking/verbose 1
+
+
+/gun/particle mu+
+/gun/energy 50 MeV
+/gun/position -0.5 0 0 m
+/run/beamOn 1
