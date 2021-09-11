@@ -13,6 +13,14 @@ compilar-GeradorPrimario:
 compilar-MeuDetector:
 	g++ -c MeuDetector.cpp `geant4-config --libs` -I${G4INCLUDES}
 	mv *.o compilado/
+compilar-MeuSensor:
+	g++ -c MeuSensor.cpp `geant4-config --libs` -I${G4INCLUDES}
+	mv *.o compilado/
+
 compilar-main:
 	g++ -c main.cpp `geant4-config --libs` -I${G4INCLUDES}
 	mv *.o compilado/
+execute-main:
+	./main 
+execute-main-macros:
+	./main macros/moun.mac

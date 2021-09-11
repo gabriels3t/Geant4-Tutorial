@@ -15,6 +15,7 @@ Geant4 é uma plataforma para "a simulação da passagem de partículas pela mat
  Organizando o projeto 
  ### 005 Geometria do Detector 
  Projetando o detector, acrecentando paredes, e volume do liquido.
- 
+ ### 006 Elementos Sensíveis
+ Criando um elemento geometrico que mimetrize um sensor
 
  

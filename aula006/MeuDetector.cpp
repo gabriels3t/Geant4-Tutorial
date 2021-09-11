@@ -1,4 +1,5 @@
 #include "MeuDetector.hpp"
+#include "MeuSensor.hpp"
 
 #include "G4Box.hh"// incluindo uma caixa
 #include "G4Material.hh" // Incluindo material
@@ -24,7 +25,7 @@ G4VPhysicalVolume* MeuDetector::Construct(){
     // Detector 
     
         //Dimensões do detector
-    double comprimento = 50.0 *CLHEP::cm;
+    double comprimento = 5.0 *CLHEP::cm;
     double largura = 10.0*CLHEP::cm;
     double espessura = 3.0*CLHEP::mm;
     
@@ -42,6 +43,14 @@ G4VPhysicalVolume* MeuDetector::Construct(){
     auto detectorVolumeLogico = new G4LogicalVolume(detectorInterior,lAr,"Volume-Logico-Detector");
     auto detectorFisicoDoVoulme = new G4PVPlacement(0,{0,0,0},detectorVolumeLogico,"detector-Fisico-do-volume",logicalWord,false,0); 
 
+    // Criando o sensor
+    auto sensorBox = new G4Box("Sensor",5.0*CLHEP::mm/2,largura/2-espessura,largura/2-espessura); 
+    auto SensorLogico = new G4LogicalVolume(sensorBox,lAr,"Sensor logico"); 
+    auto SensorFisica = new G4PVPlacement(0,{0,0,0},SensorLogico,"Sensor-Fisico-do-volume",detectorVolumeLogico,false,0);// mae detectorVolumeLogico pq esta dentro dele 
+    
+    // criando um elemento sensivel
+    auto sensor = new MeuSensor("lArPM");
+    SensorLogico->SetSensitiveDetector(sensor); // setando qual vai ser sensor
     return mundoFisico;
     
 }

@@ -1,6 +1,7 @@
 #include <iostream>
 #include "G4RunManager.hh"// "inicializador"
 #include "MeuDetector.hpp" // Incluindo Detector
+#include "MeuSensor.hpp"
 #include "GeradorPrimario.hpp"// Incluindo Gerador Primario
 #include "FonteDeParticulas.hpp" // Incluindo Fonte de particulas
 #include "G4VUserPhysicsList.hh"// incluindo a lista de fisica
